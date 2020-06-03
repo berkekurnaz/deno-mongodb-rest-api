@@ -27,11 +27,11 @@ Delete Article       : DELETE /articles/:id
 Authors Routes
 ```
 
-Get All Authors : GET /articles
-Single Author   : GET /articles/:id
-Add Author      : POST /articles
-Update Author   : PUT /articles/:id 
-Delete Author   : DELETE /articles/:id
+Get All Authors : GET /authors
+Single Author   : GET /authors/:id
+Add Author      : POST /authors
+Update Author   : PUT /authors/:id 
+Delete Author   : DELETE /authors/:id
 
 ```
 
