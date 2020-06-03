@@ -12,13 +12,36 @@ This repository contains simple rest api with Deno and MongoDB.
 
 ## Routes
 
+Articles Routes
+```
+
+Get All Articles     : GET /articles
+Get Last 10 Articles : GET /articles?last=10
+Single Article       : GET /articles/:id
+Add Article          : POST /articles
+Update Article       : PUT /articles/:id 
+Delete Article       : DELETE /articles/:id
+
+```
+
+Authors Routes
+```
+
+Get All Authors : GET /articles
+Single Author   : GET /articles/:id
+Add Author      : POST /articles
+Update Author   : PUT /articles/:id 
+Delete Author   : DELETE /articles/:id
+
+```
+
 Messages Routes
 ```
 
 Get All Messages : GET /messages
 Single Message   : GET /messages/:id
 Add Message      : POST /messages
-Update Message   : PUT /messages/:id
+Update Message   : PUT /messages/:id 
 Delete Message   : DELETE /messages/:id
 
 ```
