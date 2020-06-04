@@ -3,6 +3,7 @@ import * as ArticleController from "../controllers/ArticleController.ts";
 
 export const articleRoutes = function (fastro: Fastro) {
   fastro.get("/articles", ArticleController.getAllArticles);
+  fastro.get("/articles/last/:count", ArticleController.getLastArticles);
   fastro.get("/articles/:id", ArticleController.getArticleById);
   fastro.post("/articles", ArticleController.addNewArticle);
   fastro.put("/articles/:id", ArticleController.updateArticleById);

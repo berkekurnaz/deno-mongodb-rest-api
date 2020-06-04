@@ -16,7 +16,7 @@ Articles Routes
 ```
 
 Get All Articles     : GET /articles
-Get Last 10 Articles : GET /articles?last=10
+Get Last 10 Articles : GET /articles/last/10
 Single Article       : GET /articles/:id
 Add Article          : POST /articles
 Update Article       : PUT /articles/:id 

@@ -1,31 +1,36 @@
 import { Request } from "https://deno.land/x/fastro/mod.ts";
-import { articles } from "../database/db.ts";
+import { articles,authors } from "../database/db.ts";
 
 //@desc Get All Articles
 export const getAllArticles = async (req: Request) => {
-  // BU KISIM HATALI...
-  const result = await articles.aggregate([
-    {
-      $lookup: {
-        from: "authors",
-        localField: "author_id", // author_id
-        foreignField: "_id.oid",
-        as: "author",
-      },
-    },
-    {
-      $unwind: "$author",
-    },
-  ]);
+  var result = await articles.find();
+  for(var i=0; i<result.length; i++){
+    result[i].author = await authors.findOne({ _id: { $oid: result[i].author_id } });
+  }
+  req.send(result);
+};
+
+//@desc Get Last Articles
+export const getLastArticles = async (req: Request) => {
+  const count = req.parameter.count;
+
+  var result = await articles.find();
+
+  result = result.reverse();
+  result = result.slice(0,count);
+  
+  for(var i=0; i<result.length; i++){
+    result[i].author = await authors.findOne({ _id: { $oid: result[i].author_id } });
+  }
   req.send(result);
 };
 
 //@desc Get One Article By Id
 export const getArticleById = async (req: Request) => {
-  // BU KISIM HATALI...
   const id = req.parameter.id;
 
   const result = await articles.findOne({ _id: { $oid: id } });
+  result.author = await authors.findOne({ _id: { $oid: result.author_id } });
   if (result) {
     req.send(result, 200);
   } else {
